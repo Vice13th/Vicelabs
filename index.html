@@ -11,7 +11,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 a{color:inherit}.wrap{max-width:1320px;margin:auto;padding:25px 30px 90px}.nav{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:8px 0 19px}.brand{font-size:11px;font-weight:900;letter-spacing:.3em}.navmeta{font:9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em;color:#68737c;text-transform:uppercase}
 .hero{position:relative;min-height:79vh;display:flex;flex-direction:column;justify-content:center;padding:86px 0}.eyebrow,.label,.code{font:9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.19em;text-transform:uppercase;color:#7e8992}
 .hero h1{position:relative;z-index:1;font-size:clamp(62px,10.7vw,152px);line-height:.82;letter-spacing:-.075em;margin:22px 0 34px;max-width:1120px}.outline{color:transparent;-webkit-text-stroke:1px #dce3e7}.hero p{position:relative;z-index:1;max-width:720px;color:#89949d;font-size:18px;line-height:1.75}.signal{margin-top:27px;color:#aeb8bf;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em}.pulse{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan);margin-right:9px}
-.orbit{position:absolute;right:-85px;bottom:20px;width:500px;height:500px;border:1px solid #1c2931;border-radius:50%;opacity:.7;transform:rotate(-12deg);box-shadow:inset 0 0 80px #6fe7ff08}.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #17242b;border-radius:50%;inset:42px;transform:rotate(38deg) scaleX(.42)}.orbit:after{inset:112px;transform:rotate(-31deg) scaleX(.7)}.orbit:before{box-shadow:0 0 55px #6fe7ff05}.orbit i,.orbit b,.orbit em,.orbit span{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}.orbit i{top:54px;left:92px}.orbit b{top:130px;right:74px;width:4px;height:4px;opacity:.65}.orbit em{bottom:92px;left:104px;width:4px;height:4px;opacity:.45}.orbit span{top:232px;right:20px;width:3px;height:3px;opacity:.4}
+.orbit{position:absolute;right:-78px;bottom:8px;width:520px;height:520px;border:1px solid #17232b;border-radius:50%;opacity:.82;transform:rotate(-10deg);background:radial-gradient(circle at 50% 46%,#6fe7ff08 0 18%,transparent 48%);box-shadow:inset 0 0 90px #6fe7ff09}.orbit:before{content:"";position:absolute;inset:33px;border:1px solid #142028;border-radius:50%;transform:rotate(36deg) scaleX(.48)}.orbit:after{content:"";position:absolute;inset:92px;border:1px solid #142028;border-radius:50%;transform:rotate(-28deg) scaleX(.72)}.network{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.network .ring{fill:none;stroke:#24323a;stroke-width:1;opacity:.75}.network .ring.faint{opacity:.35}.network .edge{stroke:#39606d;stroke-width:1;opacity:.36}.network .edge.hot{stroke:#6fe7ff;opacity:.7;filter:drop-shadow(0 0 4px #6fe7ff)}.network .node{fill:#071014;stroke:#6fe7ff;stroke-width:1.2;filter:drop-shadow(0 0 6px #6fe7ff)}.network .node.dim{opacity:.5}.network .node.anchor{fill:#6fe7ff;stroke:#dffaff;filter:drop-shadow(0 0 11px #6fe7ff)}.network .label{fill:#7f9aa4;font:7px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em}.network .value{fill:#526b75;font:6px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}.network .pulse{fill:#dffaff;stroke:none;filter:drop-shadow(0 0 5px #6fe7ff)}.orbit-caption{position:absolute;left:58px;top:62px;z-index:2;color:#58717b;font:7px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;pointer-events:none}.orbit-caption b{display:block;color:#8eaab3;margin-top:5px;font-weight:500}.orbit-status{position:absolute;right:44px;bottom:49px;z-index:2;color:#4f6872;font:7px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-align:right;pointer-events:none}.orbit-status strong{display:block;color:#688e9a;font-weight:500}.orbit:hover{border-color:#284650}.orbit:hover .network .edge{opacity:.58}.orbit:hover .network .node{filter:drop-shadow(0 0 8px #6fe7ff)}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}.metric{padding:25px 20px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric strong{display:block;font-size:31px;letter-spacing:-.05em}.metric span{font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase;color:#626d76}
 .section{padding:84px 0;border-bottom:1px solid var(--line)}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}.sectionhead h2{margin:0;font:10px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:#adb6bc}.sectionhead p{max-width:600px;margin:0;color:#66717a;font-size:12px}
 .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.project{position:relative;min-height:310px;padding:27px;border:1px solid var(--line);background:linear-gradient(145deg,#0c1014,#07090b);text-decoration:none;transition:transform .2s,border-color .2s,background .2s}.project:hover{transform:translateY(-5px);border-color:#39434b;background:#0d1217}.project.featured{grid-column:span 2;min-height:280px}.project.featured .desc{max-width:900px}.num{font:8px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.2em;color:#515c65}.row{display:flex;justify-content:space-between;gap:15px;margin-top:16px;align-items:start}.name{font-size:29px;font-weight:850;letter-spacing:-.045em}.tag{font:8px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;border:1px solid currentColor;border-radius:99px;padding:5px 8px;white-space:nowrap}.desc{color:#89949d;font-size:13px;line-height:1.8;margin:17px 0 24px;max-width:650px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{font:8px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.07em;text-transform:uppercase;color:#68737c;border:1px solid #252c32;border-radius:99px;padding:4px 7px}.cyan{color:var(--cyan)}.amber{color:var(--amber)}.violet{color:var(--violet)}.red{color:var(--red)}.blue{color:var(--blue)}
@@ -23,7 +23,7 @@ a{color:inherit}.wrap{max-width:1320px;margin:auto;padding:25px 30px 90px}.nav{d
 </head>
 <body><main class="wrap">
 <nav class="nav"><div class="brand">VICE13TH LABS</div><div class="navmeta">INDEPENDENT SYSTEMS ENGINEERING · 2026</div></nav>
-<header class="hero"><div class="orbit"><i></i><b></b><em></em><span></span></div><div class="eyebrow">OBSERVABLE SYSTEMS / SENSING · IMAGING · ACQUISITION · PROTECTION · COGNITION</div>
+<header class="hero"><div class="orbit" aria-label="Interactive synthetic observation network visualization"><div class="orbit-caption">OBSERVATION NETWORK<b>POSITION / SIGNAL / STATE</b></div><svg class="network" viewBox="0 0 520 520" aria-hidden="true"><ellipse class="ring" cx="260" cy="260" rx="218" ry="76"></ellipse><ellipse class="ring" cx="260" cy="260" rx="162" ry="208" transform="rotate(44 260 260)"></ellipse><ellipse class="ring faint" cx="260" cy="260" rx="94" ry="228" transform="rotate(-52 260 260)"></ellipse><circle class="ring faint" cx="260" cy="260" r="132"></circle><g id="networkEdges"></g><g id="networkPulses"></g><g id="networkNodes"></g></svg><div class="orbit-status"><strong>SYNTHETIC TOPOLOGY / UI DEMO</strong><span>observed ≠ propagated ≠ inferred</span></div></div><div class="eyebrow">OBSERVABLE SYSTEMS / SENSING · IMAGING · ACQUISITION · PROTECTION · COGNITION</div>
 <h1>Different instruments.<br><span class="outline">One way of thinking.</span></h1>
 <p>VICE13TH LABS is an independent engineering laboratory for systems that touch reality. We instrument signals, preserve provenance, expose failure boundaries, and build software that can be inspected instead of merely believed.</p>
 <div class="signal"><span class="pulse"></span>ENGINEERING MODE / EVIDENCE-BIASED / TRACEABLE BY DESIGN</div></header>
@@ -39,4 +39,84 @@ a{color:inherit}.wrap{max-width:1320px;margin:auto;padding:25px 30px 90px}.nav{d
 <section class="section"><div class="sectionhead"><h2>02 / ENGINEERING GRAMMAR</h2><p>The interfaces change. The discipline does not.</p></div><div class="grammar"><div class="principle"><b>Evidence before inference.</b><span>Observed data, derived state and interpretation are separate layers. Claims earn their confidence through receipts.</span></div><div class="principle"><b>Provenance is part of the product.</b><span>Where a value came from, when it was observed, and how it was transformed should remain inspectable.</span></div><div class="principle"><b>Failure boundaries stay visible.</b><span>Missing hardware, uncertain mappings, synthetic inputs and unavailable evidence are represented—not disguised.</span></div></div></section>
 <section class="manifesto"><div class="label">03 / LAB POSITION</div><div class="big">Build systems that can be <span>looked inside.</span><br>Measure what matters.<br>Preserve the receipt.</div></section>
 <footer class="foot"><span>VICE13TH LABS / INDEPENDENT SYSTEMS ENGINEERING</span><a href="https://github.com/Vice13th">GITHUB ↗</a></footer>
-</main></body></html>
+</main><script>
+(function(){
+  const svg=document.querySelector('.network');
+  const edges=document.getElementById('networkEdges');
+  const nodes=document.getElementById('networkNodes');
+  const pulses=document.getElementById('networkPulses');
+  if(!svg||!edges||!nodes||!pulses)return;
+  const W=520,C=260;
+  const sources=[
+    {id:'G01',kind:'GNSS',r:198,a:.18,phase:.4,metric:'C/N₀ 42.7'},
+    {id:'G07',kind:'GNSS',r:171,a:1.03,phase:1.7,metric:'DOP -1.2'},
+    {id:'G14',kind:'GNSS',r:205,a:2.02,phase:2.6,metric:'AZ 184°'},
+    {id:'H02',kind:'HZN',r:154,a:2.88,phase:.9,metric:'EL 51.8°'},
+    {id:'O11',kind:'ORB',r:194,a:3.72,phase:2.1,metric:'SGP4'},
+    {id:'O19',kind:'ORB',r:167,a:4.51,phase:3.4,metric:'SDP4'},
+    {id:'IMU',kind:'IMU',r:136,a:5.27,phase:4.2,metric:'Δv / Δθ'}
+  ];
+  const anchor={id:'PVT',kind:'STATE',phase:0};
+  const state={x:0,y:0,hover:null};
+  sources.forEach((s,i)=>s.index=i);
+  const edgePairs=[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,0],[0,4],[1,5],[2,6]];
+  const edgeEls=edgePairs.map((pair,i)=>{
+    const e=document.createElementNS('http://www.w3.org/2000/svg','line');
+    e.setAttribute('class','edge'); e.dataset.i=i; edges.appendChild(e); return e;
+  });
+  const nodeEls=sources.map(s=>{
+    const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.dataset.id=s.id; g.style.cursor='pointer';
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('class','node'); c.setAttribute('r',s.kind==='HZN'?4.2:3.2);
+    const t=document.createElementNS('http://www.w3.org/2000/svg','text'); t.setAttribute('class','label'); t.textContent=s.id;
+    const v=document.createElementNS('http://www.w3.org/2000/svg','text'); v.setAttribute('class','value'); v.textContent=s.metric;
+    g.append(c,t,v); nodes.appendChild(g);
+    g.addEventListener('mouseenter',()=>state.hover=s.id); g.addEventListener('mouseleave',()=>state.hover=null);
+    return {g,c,t,v};
+  });
+  const ag=document.createElementNS('http://www.w3.org/2000/svg','g');
+  ag.dataset.id=anchor.id;
+  const ac=document.createElementNS('http://www.w3.org/2000/svg','circle'); ac.setAttribute('class','node anchor'); ac.setAttribute('r',6);
+  const at=document.createElementNS('http://www.w3.org/2000/svg','text'); at.setAttribute('class','label'); at.textContent='PVT / STATE';
+  ag.append(ac,at); nodes.appendChild(ag);
+  edgePairs.forEach((pair,i)=>{ const p=document.createElementNS('http://www.w3.org/2000/svg','circle'); p.setAttribute('class','pulse'); p.setAttribute('r','2'); pulses.appendChild(p); edgeEls[i].dataset.pulse=i; });
+  function pos(s,t){
+    const wobble=Math.sin(t*.00035+s.phase)*7;
+    const rr=s.r+wobble;
+    const aa=s.a+t*.000035*(s.kind==='ORB'?1.2:.35);
+    const x=C+Math.cos(aa)*rr;
+    const y=C+Math.sin(aa)*rr*.62+state.y;
+    return [x+state.x,y];
+  }
+  function frame(t){
+    const coords=sources.map(s=>pos(s,t));
+    const ap=[C+state.x*.55,C+state.y*.55];
+    nodeEls.forEach((n,i)=>{
+      const [x,y]=coords[i];
+      n.g.setAttribute('transform','translate('+x+' '+y+')');
+      n.t.setAttribute('x',8); n.t.setAttribute('y',2);
+      n.v.setAttribute('x',8); n.v.setAttribute('y',11);
+      const hot=state.hover===sources[i].id;
+      n.c.setAttribute('class','node '+(hot?'anchor':''));
+    });
+    ag.setAttribute('transform','translate('+ap[0]+' '+ap[1]+')'); at.setAttribute('x',10);at.setAttribute('y',3);
+    edgePairs.forEach((pair,i)=>{
+      const a=coords[pair[0]],b=coords[pair[1]],e=edgeEls[i];
+      e.setAttribute('x1',a[0]);e.setAttribute('y1',a[1]);e.setAttribute('x2',b[0]);e.setAttribute('y2',b[1]);
+      const hot=((Math.floor(t/170)+i)%7===0)||state.hover===sources[pair[0]].id||state.hover===sources[pair[1]].id;
+      e.setAttribute('class','edge '+(hot?'hot':''));
+      const p=pulses.children[i], q=((t*.00055+i*.17)%1), x=a[0]+(b[0]-a[0])*q, y=a[1]+(b[1]-a[1])*q;
+      p.setAttribute('cx',x);p.setAttribute('cy',y);p.style.opacity=hot?.95:.25;
+    });
+    requestAnimationFrame(frame);
+  }
+  const orbit=document.querySelector('.orbit');
+  orbit.addEventListener('pointermove',ev=>{
+    const r=orbit.getBoundingClientRect(); state.x=((ev.clientX-r.left)/r.width-.5)*16; state.y=((ev.clientY-r.top)/r.height-.5)*12;
+  });
+  orbit.addEventListener('pointerleave',()=>{state.x=0;state.y=0;state.hover=null});
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  requestAnimationFrame(frame);
+})();
+</script></body></html>
