@@ -19,9 +19,30 @@ a{color:inherit}.wrap{max-width:1320px;margin:auto;padding:25px 30px 90px}.nav{d
 .grammar{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}.principle{padding:25px;border:1px solid var(--line);background:var(--panel)}.principle b{display:block;margin-bottom:9px}.principle span{color:#77828b;font-size:12px}.manifesto{padding:105px 0 65px}.manifesto .big{font-size:clamp(38px,6vw,78px);line-height:.98;letter-spacing:-.06em;margin-top:18px;max-width:1000px}.manifesto .big span{color:#58636c}.foot{display:flex;justify-content:space-between;padding-top:25px;color:#59656e;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}
 @media(max-width:850px){.navmeta{display:none}.orbit{right:-250px;opacity:.32}.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.projects,.grammar{grid-template-columns:1fr}.project.featured{grid-column:auto}.sectionhead{display:block}.sectionhead p{margin-top:11px}}
 @media(max-width:520px){.wrap{padding:20px 18px 60px}.hero{min-height:auto;padding:80px 0}.hero h1{font-size:57px}.hero p{font-size:16px}.metrics{grid-template-columns:1fr}.metric{border-right:0!important;border-bottom:1px solid var(--line)}.metric:last-child{border:0}.name{font-size:25px}.row{display:block}.tag{display:inline-block;margin-top:9px}}
+
+.boot-screen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#050608;color:var(--text);opacity:1;visibility:visible;pointer-events:auto;transition:opacity .55s ease,visibility 0s linear 0s}
+.boot-screen.is-done{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .55s ease,visibility 0s linear .55s}
+.boot-shell{width:min(720px,calc(100vw - 48px));padding:25px 0}.boot-top{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #1c2227;padding-bottom:15px;font:9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.18em;color:#6e7a83;text-transform:uppercase}.boot-top strong{color:#c7d0d6;font-weight:600}.boot-center{position:relative;padding:74px 0 30px;text-align:center}.boot-orbit{position:relative;width:170px;height:170px;margin:0 auto 42px;border:1px solid #1b2b32;border-radius:50%;box-shadow:inset 0 0 50px #6fe7ff0a,0 0 30px #6fe7ff05}.boot-orbit:before,.boot-orbit:after{content:"";position:absolute;inset:20px;border:1px solid #18262c;border-radius:50%;transform:rotate(36deg) scaleX(.48)}.boot-orbit:after{inset:39px;transform:rotate(-31deg) scaleX(.72)}.boot-orbit i{position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan);animation:bootPulse 1.2s ease-in-out infinite}.boot-orbit i:before,.boot-orbit i:after{content:"";position:absolute;left:50%;top:50%;width:68px;height:1px;background:linear-gradient(90deg,#6fe7ff88,transparent);transform-origin:left center}.boot-orbit i:before{transform:rotate(18deg)}.boot-orbit i:after{transform:rotate(198deg)}.boot-eyebrow{font:9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:#71808a}.boot-title{margin-top:16px;font-size:clamp(36px,6vw,64px);line-height:.95;letter-spacing:-.06em;font-weight:850}.boot-title span{color:transparent;-webkit-text-stroke:1px #dce3e7}.boot-status{min-height:28px;margin:27px 0 20px;color:#7f8b94;font:10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}.boot-bar{height:2px;background:#141a1f;overflow:hidden}.boot-fill{height:100%;width:0;background:linear-gradient(90deg,#6fe7ff,#b9f4ff);box-shadow:0 0 16px #6fe7ff88;transition:width .08s linear}.boot-readout{display:flex;justify-content:space-between;gap:18px;margin-top:10px;color:#4f5b64;font:8px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}.boot-readout b{color:#98a7af;font-weight:500}.network.booting .ring{transition:opacity .2s ease}.network.booting .edge,.network.booting .node,.network.booting .label,.network.booting .value,.network.booting .pulse{transition:opacity .2s ease}
+body.booting .hero>*:not(.orbit){opacity:.96}
+body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
+@keyframes bootPulse{0%,100%{transform:scale(.82);box-shadow:0 0 10px var(--cyan)}50%{transform:scale(1.18);box-shadow:0 0 24px var(--cyan)}}
+@media(max-width:520px){.boot-shell{width:calc(100vw - 36px)}.boot-center{padding-top:58px}.boot-orbit{width:140px;height:140px;margin-bottom:34px}.boot-readout{font-size:7px}.boot-readout span:last-child{max-width:58%;text-align:right}}
+@media(prefers-reduced-motion:reduce){.boot-screen{transition:none}.boot-screen.is-done{transition:none}.boot-orbit i{animation:none}.boot-fill{transition:none}}
 </style>
 </head>
-<body><main class="wrap">
+<body><div class="boot-screen" id="bootScreen" role="status" aria-live="polite" aria-label="VICE13TH LABS initialization">
+<div class="boot-shell">
+<div class="boot-top"><span><strong>VICE13TH LABS</strong></span><span id="bootCode">BOOT / 00</span></div>
+<div class="boot-center">
+<div class="boot-orbit" aria-hidden="true"><i></i></div>
+<div class="boot-eyebrow">SYSTEM INITIALIZATION</div>
+<div class="boot-title">WAKING THE <span>LAB</span></div>
+<div class="boot-status" id="bootStatus">INITIALIZING LAB</div>
+<div class="boot-bar" aria-hidden="true"><div class="boot-fill" id="bootFill"></div></div>
+<div class="boot-readout"><span id="bootPercent"><b>00%</b></span><span id="bootMeta">OBSERVATION / DESIGN / ENGINEERING</span></div>
+</div>
+</div>
+</div><main class="wrap">
 <nav class="nav"><div class="brand">VICE13TH LABS</div><div class="navmeta">INDEPENDENT SYSTEMS ENGINEERING · 2026</div></nav>
 <header class="hero"><div class="orbit" aria-label="Interactive synthetic observation network visualization"><div class="orbit-caption">OBSERVATION NETWORK<b>POSITION / SIGNAL / STATE</b></div><svg class="network" viewBox="0 0 520 520" aria-hidden="true"><ellipse class="ring" cx="260" cy="260" rx="218" ry="76"></ellipse><ellipse class="ring" cx="260" cy="260" rx="162" ry="208" transform="rotate(44 260 260)"></ellipse><ellipse class="ring faint" cx="260" cy="260" rx="94" ry="228" transform="rotate(-52 260 260)"></ellipse><circle class="ring faint" cx="260" cy="260" r="132"></circle><g id="networkEdges"></g><g id="networkPulses"></g><g id="networkNodes"></g></svg><div class="orbit-status"><strong>SYNTHETIC TOPOLOGY / UI DEMO</strong><span>observed ≠ propagated ≠ inferred</span></div></div><div class="eyebrow">OBSERVABLE SYSTEMS / SENSING · IMAGING · ACQUISITION · PROTECTION · COGNITION</div>
 <h1>Different instruments.<br><span class="outline">One way of thinking.</span></h1>
@@ -118,5 +139,65 @@ a{color:inherit}.wrap{max-width:1320px;margin:auto;padding:25px 30px 90px}.nav{d
   orbit.addEventListener('pointerleave',()=>{state.x=0;state.y=0;state.hover=null});
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   requestAnimationFrame(frame);
+})();
+</script><script>
+(function(){
+  const screen=document.getElementById('bootScreen');
+  const fill=document.getElementById('bootFill');
+  const percent=document.getElementById('bootPercent');
+  const status=document.getElementById('bootStatus');
+  const code=document.getElementById('bootCode');
+  const network=document.querySelector('.network');
+  const orbit=document.querySelector('.orbit');
+  if(!screen||!fill||!percent||!status||!code)return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const steps=[
+    [0,'INITIALIZING LAB'],
+    [.18,'LOADING SYSTEM CONSTELLATION'],
+    [.42,'INDEXING OBSERVATION GRAPH'],
+    [.68,'ESTABLISHING ENGINEERING CONTEXT'],
+    [.9,'ALIGNING INSTRUMENTS'],
+    [1,'SYSTEM READY']
+  ];
+  document.body.classList.add('booting');
+  if(network)network.classList.add('booting');
+  const nodes=network?network.querySelectorAll('.node,.label,.value'):[];
+  const edges=network?network.querySelectorAll('.edge,.pulse'):[];
+  const rings=network?network.querySelectorAll('.ring'):[];
+  let finished=false,start=performance.now();
+  function labelFor(p){let current=steps[0][1];for(const s of steps){if(p>=s[0])current=s[1];}return current}
+  function update(p){
+    const pct=Math.round(p*100);
+    fill.style.width=pct+'%';
+    percent.innerHTML='<b>'+String(pct).padStart(2,'0')+'%</b>';
+    code.textContent='BOOT / '+String(Math.min(99,pct)).padStart(2,'0');
+    status.textContent=labelFor(p);
+    const alpha=p.toFixed(2);
+    document.documentElement.style.setProperty('--boot-alpha',alpha);
+    rings.forEach(el=>el.style.opacity=(.08+p*.64).toFixed(2));
+    edges.forEach(el=>el.style.opacity=(.05+p*.7).toFixed(2));
+    nodes.forEach(el=>el.style.opacity=(.22+p*.72).toFixed(2));
+  }
+  function finish(){
+    if(finished)return;
+    finished=true;
+    update(1);
+    setTimeout(function(){
+      screen.classList.add('is-done');
+      document.body.classList.remove('booting');
+      document.documentElement.style.removeProperty('--boot-alpha');
+      if(network){
+        network.classList.remove('booting');
+        network.querySelectorAll('[style]').forEach(el=>el.removeAttribute('style'));
+      }
+    },reduced?40:180);
+  }
+  if(reduced){update(1);finish();return}
+  function tick(now){
+    const p=Math.min(1,(now-start)/1650);
+    update(p);
+    if(p>=1)finish();else requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 })();
 </script></body></html>
