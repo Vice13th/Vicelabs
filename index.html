@@ -226,6 +226,9 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
     const accent=card.dataset.accent;
     const accentColors={cyan:'#6fe7ff',amber:'#ffc47f',violet:'#b69cff'};
     if(accentColors[accent])panel.style.borderLeftColor=accentColors[accent];
+    actions.append(makeLink('VIEW REPOSITORY ↗','https://github.com/Vice13th/'+encodeURIComponent(repo),false));
+    actions.hidden=false;
+    panel.append(actions);
     try{
       const response=await fetch('https://api.github.com/repos/Vice13th/'+encodeURIComponent(repo)+'/releases/latest',{
         headers:{Accept:'application/vnd.github+json'},
@@ -256,8 +259,6 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
       if(preferred&&preferred.browser_download_url){
         actions.append(makeLink('DOWNLOAD ↗',preferred.browser_download_url,false));
       }
-      actions.hidden=false;
-      panel.append(actions);
     }catch(error){
       state(card,'RELEASE DATA TEMPORARILY UNAVAILABLE',true);
     }
