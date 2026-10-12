@@ -468,7 +468,7 @@ a:focus-visible,button:focus-visible{
   left:0;
   z-index:-1;
   height:1px;
-  opacity:0;
+  opacity:.22;
   background:linear-gradient(90deg,transparent,rgba(237,0,27,.75),transparent);
   transition:opacity .25s ease;
 }
@@ -509,9 +509,21 @@ a:focus-visible,button:focus-visible{
 .project.featured .desc{max-width:920px}
 .project.featured:hover{border-left-color:var(--brand)}
 .num{
-  color:#777f87;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#95757a;
   font:8px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
   letter-spacing:.17em;
+}
+.num:before{
+  content:"";
+  display:block;
+  flex:0 0 12px;
+  width:12px;
+  height:1px;
+  background:var(--brand);
+  box-shadow:0 0 8px rgba(237,0,27,.22);
 }
 .row{
   display:flex;
