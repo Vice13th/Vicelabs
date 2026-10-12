@@ -33,6 +33,134 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
 
 @media(max-width:520px){.boot-shell{width:calc(100vw - 36px)}.boot-center{padding-top:58px}.boot-orbit{width:140px;height:140px;margin-bottom:34px}.boot-readout{font-size:7px}.boot-readout span:last-child{max-width:58%;text-align:right}}
 @media(prefers-reduced-motion:reduce){.boot-screen{transition:none}.boot-screen.is-done{transition:none}.boot-fill{transition:none}}
+
+/* Brand system — derived from the VICE13TH LABS red mark. */
+:root{
+  --brand:#ed001b;
+  --brand-bright:#ff344b;
+  --brand-soft:#ff98a4;
+  --brand-line:rgba(237,0,27,.28);
+  --brand-glow:rgba(237,0,27,.16);
+}
+body:before{
+  background:
+    linear-gradient(rgba(237,0,27,.026) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(237,0,27,.026) 1px,transparent 1px);
+}
+.nav{border-bottom-color:#2a1a1e}
+.brand-lockup{
+  display:inline-flex;align-items:center;gap:10px;min-width:0;
+  color:inherit;text-decoration:none;
+}
+.brand-mark{
+  display:block;flex:0 0 auto;width:28px;height:28px;object-fit:contain;
+  filter:drop-shadow(0 0 8px rgba(237,0,27,.2));
+  transition:filter .2s ease,transform .2s ease;
+}
+.brand-lockup:hover .brand-mark{
+  filter:drop-shadow(0 0 12px rgba(237,0,27,.42));
+  transform:translateY(-1px);
+}
+.brand-lockup:focus-visible{outline:2px solid var(--brand);outline-offset:6px}
+.signal .pulse{
+  background:var(--brand);
+  box-shadow:0 0 16px rgba(237,0,27,.72);
+}
+.orbit{
+  border-color:#29171c;
+  background:radial-gradient(circle at 50% 46%,rgba(237,0,27,.035) 0 18%,transparent 48%);
+  box-shadow:inset 0 0 90px rgba(237,0,27,.025);
+}
+.orbit:before,.orbit:after{border-color:#24161a}
+.network .ring{stroke:#3a2026}
+.network .ring.faint{stroke:#321a20}
+.network .edge{stroke:#73323c}
+.network .edge.hot{
+  stroke:var(--brand-bright);
+  filter:drop-shadow(0 0 4px rgba(237,0,27,.5));
+}
+.network .node{
+  stroke:var(--brand-bright);
+  filter:drop-shadow(0 0 6px rgba(237,0,27,.45));
+}
+.network .node.anchor{
+  fill:var(--brand);
+  stroke:#ffe4e8;
+  filter:drop-shadow(0 0 11px rgba(237,0,27,.65));
+}
+.network .pulse{
+  fill:#ffe4e8;
+  filter:drop-shadow(0 0 5px rgba(237,0,27,.65));
+}
+.network .label{fill:#c08d95}
+.network .value{fill:#8e5962}
+.orbit-caption{color:#a36c76}
+.orbit-caption b{color:#d09aa2}
+.orbit-status{color:#8c535d}
+.orbit-status strong{color:#c87f8a}
+.orbit:hover{border-color:#5b1d28}
+.orbit:hover .network .edge{opacity:.65}
+.orbit:hover .network .node{filter:drop-shadow(0 0 8px rgba(237,0,27,.65))}
+.boot-orbit{
+  border-color:#35161d;
+  box-shadow:inset 0 0 50px rgba(237,0,27,.055),0 0 30px rgba(237,0,27,.035);
+}
+.boot-orbit:before,.boot-orbit:after{border-color:#32171d}
+.boot-logo{filter:drop-shadow(0 0 15px rgba(237,0,27,.28))}
+.boot-orbit i{
+  background:var(--brand-bright);
+  box-shadow:0 0 18px rgba(237,0,27,.75);
+}
+.boot-orbit i:before,.boot-orbit i:after{
+  background:linear-gradient(90deg,rgba(237,0,27,.68),transparent);
+}
+.boot-bar{background:#211317}
+.boot-fill{
+  background:linear-gradient(90deg,var(--brand),#ff6576);
+  box-shadow:0 0 16px rgba(237,0,27,.42);
+}
+.boot-readout b{color:#e0a0a9}
+.sectionhead h2:before{
+  content:"";display:inline-block;width:5px;height:5px;margin:0 10px 1px 0;
+  background:var(--brand);box-shadow:0 0 9px rgba(237,0,27,.55);
+}
+.project{transition:transform .2s,border-color .2s,background .2s,box-shadow .2s}
+.project:hover{
+  border-color:#49252c;
+  box-shadow:0 12px 36px rgba(237,0,27,.045);
+}
+.project.featured{border-left-color:rgba(237,0,27,.38)}
+.project.featured:hover{border-left-color:var(--brand)}
+a:focus-visible,.release-link:focus-visible{
+  outline:2px solid var(--brand);
+  outline-offset:4px;
+}
+::selection{background:rgba(237,0,27,.28);color:#fff}
+.release-link:hover{
+  border-color:var(--brand);
+  color:#ff8d9a;
+  background:rgba(237,0,27,.07);
+}
+.release-link.primary{
+  border-color:rgba(237,0,27,.7);
+  color:#ffe5e8;
+  background:linear-gradient(135deg,rgba(237,0,27,.15),rgba(237,0,27,.035));
+}
+.release-link.primary:hover{
+  border-color:var(--brand-bright);
+  color:#fff;
+  background:rgba(237,0,27,.16);
+}
+.foot a{text-decoration:none;transition:color .2s ease}
+.foot a:hover{color:#ff6677}
+@media(max-width:520px){
+  .brand-lockup{gap:8px}
+  .brand-mark{width:24px;height:24px}
+}
+@media(prefers-reduced-motion:reduce){
+  .brand-mark,.project,.foot a{transition:none}
+}
+
 </style>
 </head>
 <body><div class="boot-screen" id="bootScreen" role="status" aria-live="polite" aria-label="VICE13TH LABS initialization">
@@ -48,7 +176,7 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
 </div>
 </div>
 </div><main class="wrap">
-<nav class="nav"><div class="brand">VICE13TH LABS</div><div class="navmeta">INDEPENDENT SYSTEMS ENGINEERING · 2026</div></nav>
+<nav class="nav"><a class="brand-lockup" href="#top" aria-label="VICE13TH LABS home"><img class="brand-mark" src="./vicelabs-loader-logo.svg" width="28" height="28" alt="" aria-hidden="true" decoding="async"><span class="brand">VICE13TH LABS</span></a><div class="navmeta">INDEPENDENT SYSTEMS ENGINEERING · 2026</div></nav>
 <header class="hero"><div class="orbit" aria-label="Interactive synthetic observation network visualization"><div class="orbit-caption">OBSERVATION NETWORK<b>POSITION / SIGNAL / STATE</b></div><svg class="network" viewBox="0 0 520 520" aria-hidden="true"><ellipse class="ring" cx="260" cy="260" rx="218" ry="76"></ellipse><ellipse class="ring" cx="260" cy="260" rx="162" ry="208" transform="rotate(44 260 260)"></ellipse><ellipse class="ring faint" cx="260" cy="260" rx="94" ry="228" transform="rotate(-52 260 260)"></ellipse><circle class="ring faint" cx="260" cy="260" r="132"></circle><g id="networkEdges"></g><g id="networkPulses"></g><g id="networkNodes"></g></svg><div class="orbit-status"><strong>SYNTHETIC TOPOLOGY / UI DEMO</strong><span>observed ≠ propagated ≠ inferred</span></div></div><div class="eyebrow">OBSERVABLE SYSTEMS / SENSING · IMAGING · ACQUISITION · PROTECTION · COGNITION</div>
 <h1>Different instruments.<br><span class="outline">One way of thinking.</span></h1>
 <p>VICE13TH LABS is an independent engineering laboratory for systems that touch reality. We instrument signals, preserve provenance, expose failure boundaries, and build software that can be inspected instead of merely believed.</p>
