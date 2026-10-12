@@ -337,9 +337,39 @@ a:focus-visible,button:focus-visible{
   color:#bd838b;
   font-weight:500;
 }
-.orbit:hover{border-color:#51212a}
-.orbit:hover .network .edge{opacity:.62}
-.orbit:hover .network .node{filter:drop-shadow(0 0 7px rgba(237,0,27,.52))}
+.orbit:hover,.orbit.is-observing{border-color:#6a2631;box-shadow:inset 0 0 90px rgba(237,0,27,.055),0 0 34px rgba(237,0,27,.055)}
+.orbit:hover .network .edge,.orbit.is-observing .network .edge{opacity:.62;transition:opacity .22s ease}
+.orbit:hover .network .node,.orbit.is-observing .network .node{filter:drop-shadow(0 0 7px rgba(237,0,27,.52))}
+.orbit:focus-visible{outline:2px solid rgba(255,64,85,.82);outline-offset:5px}
+.observer-readout{
+  position:absolute;left:38px;bottom:96px;z-index:4;width:min(268px,calc(100% - 76px));
+  display:grid;gap:7px;padding:13px 14px 12px;border:1px solid rgba(237,0,27,.35);
+  background:linear-gradient(135deg,rgba(7,8,11,.96),rgba(18,7,11,.91));
+  box-shadow:0 10px 34px rgba(0,0,0,.32),inset 2px 0 0 rgba(237,0,27,.42);
+  color:#b3a4aa;font:8px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.11em;
+  opacity:0;visibility:hidden;pointer-events:none;transform:translateY(7px);
+  transition:opacity .22s ease,transform .28s var(--ease),visibility .22s ease;
+}
+.orbit.is-observing .observer-readout{opacity:1;visibility:visible;transform:translateY(0)}
+.observer-kicker{display:flex;align-items:center;gap:7px;color:#9d747d;font-size:7px;letter-spacing:.14em}
+.observer-kicker i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--brand-bright);box-shadow:0 0 10px rgba(237,0,27,.65)}
+.observer-readout>strong{display:block;padding-bottom:5px;border-bottom:1px solid #372129;color:#f0dfe3;font-size:10px;font-weight:600;letter-spacing:.07em}
+.observer-readout>strong em{display:block;margin-top:2px;color:#ff5268;font-style:normal;font-size:9px}
+.observer-line{display:flex;justify-content:space-between;gap:12px;color:#8b7c82}
+.observer-line b{color:#d2a0a9;font-weight:500}
+.observer-prompt{margin-top:2px;color:#ff6478;letter-spacing:.15em}
+.observer-scan{
+  position:absolute;top:12%;left:19%;z-index:3;width:62%;height:1px;pointer-events:none;opacity:0;
+  background:linear-gradient(90deg,transparent,rgba(255,64,85,.9) 24%,rgba(255,210,216,.95) 50%,rgba(255,64,85,.9) 76%,transparent);
+  box-shadow:0 0 9px rgba(237,0,27,.6),0 0 22px rgba(237,0,27,.28);
+}
+.orbit.is-observing .observer-scan{animation:observer-sweep 1.25s cubic-bezier(.16,.68,.3,1) both}
+@keyframes observer-sweep{
+  0%{transform:translateY(0);opacity:0}
+  12%{opacity:.92}
+  78%{opacity:.72}
+  100%{transform:translateY(330px);opacity:0}
+}
 .hero-actions{
   display:flex;
   align-items:center;
@@ -767,6 +797,7 @@ a:focus-visible,button:focus-visible{
   .orbit{right:-250px;bottom:10px;width:430px;opacity:.22;pointer-events:none}
   .orbit-caption{top:46px;left:40px}
   .orbit-status{right:31px;bottom:34px}
+  .observer-readout,.observer-scan{display:none}
   .hero-actions{align-items:stretch;gap:8px;margin-top:25px}
   .action{min-height:42px;gap:15px;padding:0 11px;font-size:8px}
   .action-primary{flex:1 1 100%}
@@ -969,6 +1000,8 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
 }
 @media(prefers-reduced-motion:reduce){
   .boot-screen,.boot-screen.is-done,.boot-fill{transition:none}
+  .observer-readout{transition:none;transform:none}
+  .observer-scan{display:none}
 }
 
 </style>
@@ -987,7 +1020,7 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
 </div>
 </div><main class="wrap">
 <nav class="nav"><a class="brand-lockup" href="./" aria-label="VICE13TH LABS home"><img class="brand-mark" src="./vicelabs-loader-logo.svg" width="28" height="28" alt="" aria-hidden="true" decoding="async"><span class="brand">VICE13TH LABS</span></a><div class="nav-side"><div class="nav-links"><a href="#systems">SYSTEMS <span aria-hidden="true">↘</span></a><a href="#method">METHOD <span aria-hidden="true">↘</span></a><a href="https://github.com/Vice13th" target="_blank" rel="noopener noreferrer">SOURCE ↗</a></div><div class="navmeta">INDEPENDENT SYSTEMS ENGINEERING · 2026</div></div></nav>
-<header id="top" class="hero"><div class="orbit" role="img" aria-label="Synthetic observation network visualization illustrating position, signal and state; data shown is illustrative, not live telemetry."><div class="orbit-caption">OBSERVATION NETWORK<b>POSITION / SIGNAL / STATE</b></div><svg class="network" viewBox="0 0 520 520" aria-hidden="true"><ellipse class="ring" cx="260" cy="260" rx="218" ry="76"></ellipse><ellipse class="ring" cx="260" cy="260" rx="162" ry="208" transform="rotate(44 260 260)"></ellipse><ellipse class="ring faint" cx="260" cy="260" rx="94" ry="228" transform="rotate(-52 260 260)"></ellipse><circle class="ring faint" cx="260" cy="260" r="132"></circle><g id="networkEdges"></g><g id="networkPulses"></g><g id="networkNodes"></g></svg><div class="orbit-status"><strong>SYNTHETIC TOPOLOGY / UI DEMO</strong><span>observed ≠ propagated ≠ inferred</span></div></div><div class="eyebrow">OBSERVABLE SYSTEMS / SENSING · IMAGING · ACQUISITION · PROTECTION · COGNITION</div>
+<header id="top" class="hero"><div class="orbit" role="group" tabindex="0" aria-label="Interactive synthetic observation network. Hover or focus to reveal a fictional observer handshake. The visualization is illustrative, not live telemetry."><div class="orbit-caption">OBSERVATION NETWORK<b>POSITION / SIGNAL / STATE</b></div><svg class="network" viewBox="0 0 520 520" aria-hidden="true"><ellipse class="ring" cx="260" cy="260" rx="218" ry="76"></ellipse><ellipse class="ring" cx="260" cy="260" rx="162" ry="208" transform="rotate(44 260 260)"></ellipse><ellipse class="ring faint" cx="260" cy="260" rx="94" ry="228" transform="rotate(-52 260 260)"></ellipse><circle class="ring faint" cx="260" cy="260" r="132"></circle><g id="networkEdges"></g><g id="networkPulses"></g><g id="networkNodes"></g></svg><div class="orbit-status"><strong>SYNTHETIC TOPOLOGY / UI DEMO</strong><span>observed ≠ propagated ≠ inferred</span></div><div class="observer-readout" aria-hidden="true"><span class="observer-kicker"><i></i> OBSERVER TRACE / 07</span><strong>OBSERVER LINK <em>// UNRESOLVED</em></strong><span class="observer-line">SIGNAL <b>DETECTED</b></span><span class="observer-line">IDENTITY <b>UNKNOWN</b></span><span class="observer-prompt">[ HANDSHAKE PENDING ]</span></div><div class="observer-scan" aria-hidden="true"></div></div><div class="eyebrow">OBSERVABLE SYSTEMS / SENSING · IMAGING · ACQUISITION · PROTECTION · COGNITION</div>
 <h1>Different instruments.<br><span class="outline">One way of thinking.</span></h1>
 <p>VICE13TH LABS is an independent engineering laboratory for systems that touch reality. We instrument signals, preserve provenance, expose failure boundaries, and build software that can be inspected instead of merely believed.</p>
 <div class="signal"><span class="pulse" aria-hidden="true"></span>ENGINEERING MODE / EVIDENCE-BIASED / TRACEABLE BY DESIGN</div><div class="hero-actions"><a class="action action-primary" href="#systems"><span>EXPLORE THE SYSTEMS</span><span aria-hidden="true">↘</span></a><a class="action action-secondary" href="#method"><span>READ THE ENGINEERING METHOD</span><span aria-hidden="true">↗</span></a></div></header>
@@ -1077,6 +1110,16 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
   }
   const orbit=document.querySelector('.orbit');
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  orbit.addEventListener('pointerenter',ev=>{
+    if(ev.pointerType==='mouse'||ev.pointerType==='pen')orbit.classList.add('is-observing');
+  });
+  orbit.addEventListener('pointerleave',()=>{
+    if(document.activeElement!==orbit)orbit.classList.remove('is-observing');
+  });
+  orbit.addEventListener('focus',()=>orbit.classList.add('is-observing'));
+  orbit.addEventListener('blur',()=>{
+    if(!orbit.matches(':hover'))orbit.classList.remove('is-observing');
+  });
   if(!reducedMotion){
     orbit.addEventListener('pointermove',ev=>{
       const r=orbit.getBoundingClientRect();
