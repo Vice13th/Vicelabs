@@ -342,15 +342,16 @@ a:focus-visible,button:focus-visible{
 .orbit:hover .network .node,.orbit.is-observing .network .node{filter:drop-shadow(0 0 7px rgba(237,0,27,.52))}
 .orbit:focus-visible{outline:2px solid rgba(255,64,85,.82);outline-offset:5px}
 .observer-readout{
-  position:absolute;left:38px;bottom:96px;z-index:4;width:min(268px,calc(100% - 76px));
-  display:grid;gap:7px;padding:13px 14px 12px;border:1px solid rgba(237,0,27,.35);
-  background:linear-gradient(135deg,rgba(7,8,11,.96),rgba(18,7,11,.91));
-  box-shadow:0 10px 34px rgba(0,0,0,.32),inset 2px 0 0 rgba(237,0,27,.42);
+  position:absolute;right:clamp(20px,5vw,72px);bottom:clamp(110px,10vw,148px);z-index:5;
+  width:min(268px,calc(100% - 36px));
+  display:grid;gap:7px;padding:13px 14px 12px;border:1px solid rgba(237,0,27,.42);
+  background:linear-gradient(135deg,rgba(7,8,11,.97),rgba(18,7,11,.95));
+  box-shadow:0 10px 34px rgba(0,0,0,.38),inset 2px 0 0 rgba(237,0,27,.52);
   color:#b3a4aa;font:8px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.11em;
   opacity:0;visibility:hidden;pointer-events:none;transform:translateY(7px);
   transition:opacity .22s ease,transform .28s var(--ease),visibility .22s ease;
 }
-.orbit.is-observing .observer-readout{opacity:1;visibility:visible;transform:translateY(0)}
+.hero.is-observing .observer-readout{opacity:1;visibility:visible;transform:translateY(0)}
 .observer-kicker{display:flex;align-items:center;gap:7px;color:#9d747d;font-size:7px;letter-spacing:.14em}
 .observer-kicker i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--brand-bright);box-shadow:0 0 10px rgba(237,0,27,.65)}
 .observer-readout>strong{display:block;padding-bottom:5px;border-bottom:1px solid #372129;color:#f0dfe3;font-size:10px;font-weight:600;letter-spacing:.07em}
@@ -769,7 +770,7 @@ a:focus-visible,button:focus-visible{
 @media(max-width:850px){
   .hero{min-height:640px}
   .orbit{right:-205px;bottom:28px;opacity:.28}
-  .observer-readout{left:auto;right:230px;bottom:78px;width:246px}
+  .observer-readout{right:24px;bottom:28px;width:min(246px,calc(100% - 30px))}
   .hero h1{font-size:clamp(58px,10vw,90px)}
   .hero p{max-width:610px}
   .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1021,10 +1022,10 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
 </div>
 </div><main class="wrap">
 <nav class="nav"><a class="brand-lockup" href="./" aria-label="VICE13TH LABS home"><img class="brand-mark" src="./vicelabs-loader-logo.svg" width="28" height="28" alt="" aria-hidden="true" decoding="async"><span class="brand">VICE13TH LABS</span></a><div class="nav-side"><div class="nav-links"><a href="#systems">SYSTEMS <span aria-hidden="true">↘</span></a><a href="#method">METHOD <span aria-hidden="true">↘</span></a><a href="https://github.com/Vice13th" target="_blank" rel="noopener noreferrer">SOURCE ↗</a></div><div class="navmeta">INDEPENDENT SYSTEMS ENGINEERING · 2026</div></div></nav>
-<header id="top" class="hero"><div class="orbit" role="group" tabindex="0" aria-label="Interactive synthetic observation network. Hover or focus to reveal a fictional observer handshake. The visualization is illustrative, not live telemetry."><div class="orbit-caption">OBSERVATION NETWORK<b>POSITION / SIGNAL / STATE</b></div><svg class="network" viewBox="0 0 520 520" aria-hidden="true"><ellipse class="ring" cx="260" cy="260" rx="218" ry="76"></ellipse><ellipse class="ring" cx="260" cy="260" rx="162" ry="208" transform="rotate(44 260 260)"></ellipse><ellipse class="ring faint" cx="260" cy="260" rx="94" ry="228" transform="rotate(-52 260 260)"></ellipse><circle class="ring faint" cx="260" cy="260" r="132"></circle><g id="networkEdges"></g><g id="networkPulses"></g><g id="networkNodes"></g></svg><div class="orbit-status"><strong>SYNTHETIC TOPOLOGY / UI DEMO</strong><span>observed ≠ propagated ≠ inferred</span></div><div class="observer-readout" aria-hidden="true"><span class="observer-kicker"><i></i> OBSERVER TRACE / 07</span><strong>OBSERVER LINK <em>// UNRESOLVED</em></strong><span class="observer-line">SIGNAL <b>DETECTED</b></span><span class="observer-line">IDENTITY <b>UNKNOWN</b></span><span class="observer-prompt">[ HANDSHAKE PENDING ]</span></div><div class="observer-scan" aria-hidden="true"></div></div><div class="eyebrow">OBSERVABLE SYSTEMS / SENSING · IMAGING · ACQUISITION · PROTECTION · COGNITION</div>
+<header id="top" class="hero"><div class="orbit" role="group" tabindex="0" aria-label="Interactive synthetic observation network. Hover or focus to reveal a fictional observer handshake. The visualization is illustrative, not live telemetry."><div class="orbit-caption">OBSERVATION NETWORK<b>POSITION / SIGNAL / STATE</b></div><svg class="network" viewBox="0 0 520 520" aria-hidden="true"><ellipse class="ring" cx="260" cy="260" rx="218" ry="76"></ellipse><ellipse class="ring" cx="260" cy="260" rx="162" ry="208" transform="rotate(44 260 260)"></ellipse><ellipse class="ring faint" cx="260" cy="260" rx="94" ry="228" transform="rotate(-52 260 260)"></ellipse><circle class="ring faint" cx="260" cy="260" r="132"></circle><g id="networkEdges"></g><g id="networkPulses"></g><g id="networkNodes"></g></svg><div class="orbit-status"><strong>SYNTHETIC TOPOLOGY / UI DEMO</strong><span>observed ≠ propagated ≠ inferred</span></div><div class="observer-scan" aria-hidden="true"></div></div><div class="eyebrow">OBSERVABLE SYSTEMS / SENSING · IMAGING · ACQUISITION · PROTECTION · COGNITION</div>
 <h1>Different instruments.<br><span class="outline">One way of thinking.</span></h1>
 <p>VICE13TH LABS is an independent engineering laboratory for systems that touch reality. We instrument signals, preserve provenance, expose failure boundaries, and build software that can be inspected instead of merely believed.</p>
-<div class="signal"><span class="pulse" aria-hidden="true"></span>ENGINEERING MODE / EVIDENCE-BIASED / TRACEABLE BY DESIGN</div><div class="hero-actions"><a class="action action-primary" href="#systems"><span>EXPLORE THE SYSTEMS</span><span aria-hidden="true">↘</span></a><a class="action action-secondary" href="#method"><span>READ THE ENGINEERING METHOD</span><span aria-hidden="true">↗</span></a></div></header>
+<div class="signal"><span class="pulse" aria-hidden="true"></span>ENGINEERING MODE / EVIDENCE-BIASED / TRACEABLE BY DESIGN</div><div class="hero-actions"><a class="action action-primary" href="#systems"><span>EXPLORE THE SYSTEMS</span><span aria-hidden="true">↘</span></a><a class="action action-secondary" href="#method"><span>READ THE ENGINEERING METHOD</span><span aria-hidden="true">↗</span></a></div><div class="observer-readout" aria-hidden="true"><span class="observer-kicker"><i></i> OBSERVER TRACE / 07</span><strong>OBSERVER LINK <em>// UNRESOLVED</em></strong><span class="observer-line">SIGNAL <b>DETECTED</b></span><span class="observer-line">IDENTITY <b>UNKNOWN</b></span><span class="observer-prompt">[ HANDSHAKE PENDING ]</span></div></header>
 <section class="metrics"><div class="metric"><strong>05</strong><span>Active system domains</span></div><div class="metric"><strong>01</strong><span>Shared engineering grammar</span></div><div class="metric"><strong>∞</strong><span>Measurements worth keeping</span></div><div class="metric"><strong>0</strong><span>Fabricated certainty</span></div></section>
 <section id="systems" class="section"><div class="sectionhead"><h2>01 / SYSTEM CONSTELLATION</h2><p>Five systems, five problem spaces. The common layer is disciplined observation: acquire the signal, preserve its context, model the state, and make the boundary visible.</p></div>
 <div class="projects">
@@ -1110,24 +1111,38 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
     if(animate!==false)requestAnimationFrame(frame);
   }
   const orbit=document.querySelector('.orbit');
+  const hero=orbit.closest('.hero');
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  orbit.addEventListener('pointerenter',ev=>{
-    if(ev.pointerType==='mouse'||ev.pointerType==='pen')orbit.classList.add('is-observing');
+  let pointerInOrb=false;
+  function setObserverState(active){
+    const visible=Boolean(active||document.activeElement===orbit);
+    orbit.classList.toggle('is-observing',visible);
+    hero.classList.toggle('is-observing',visible);
+  }
+  // Track the visible orbital circle at document level. Hero text can overlap
+  // its transparent hit area, so relying on pointerenter on the orbit is brittle.
+  document.addEventListener('pointermove',ev=>{
+    if(ev.pointerType!=='mouse'&&ev.pointerType!=='pen')return;
+    const r=orbit.getBoundingClientRect();
+    if(!r.width||!r.height)return;
+    const nx=(ev.clientX-(r.left+r.width/2))/(r.width/2);
+    const ny=(ev.clientY-(r.top+r.height/2))/(r.height/2);
+    pointerInOrb=(nx*nx+ny*ny)<=.92;
+    setObserverState(pointerInOrb);
+    if(!reducedMotion){
+      state.x=pointerInOrb?nx*8:0;
+      state.y=pointerInOrb?ny*6:0;
+    }
+  },{passive:true});
+  document.addEventListener('pointerout',ev=>{
+    if(!ev.relatedTarget){
+      pointerInOrb=false;state.x=0;state.y=0;
+      setObserverState(false);
+    }
   });
-  orbit.addEventListener('pointerleave',()=>{
-    if(document.activeElement!==orbit)orbit.classList.remove('is-observing');
-  });
-  orbit.addEventListener('focus',()=>orbit.classList.add('is-observing'));
-  orbit.addEventListener('blur',()=>{
-    if(!orbit.matches(':hover'))orbit.classList.remove('is-observing');
-  });
+  orbit.addEventListener('focus',()=>setObserverState(true));
+  orbit.addEventListener('blur',()=>setObserverState(pointerInOrb));
   if(!reducedMotion){
-    orbit.addEventListener('pointermove',ev=>{
-      const r=orbit.getBoundingClientRect();
-      state.x=((ev.clientX-r.left)/r.width-.5)*16;
-      state.y=((ev.clientY-r.top)/r.height-.5)*12;
-    });
-    orbit.addEventListener('pointerleave',()=>{state.x=0;state.y=0;state.hover=null});
     requestAnimationFrame(frame);
   }else{
     frame(performance.now(),false);
