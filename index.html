@@ -803,6 +803,162 @@ a:focus-visible,button:focus-visible{
   }
 }
 
+
+/* Boot overlay — required for the initialization screen to remain an overlay,
+   rather than exposing the SVG's intrinsic dimensions in document flow. */
+.boot-screen{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  padding:24px;
+  background:
+    radial-gradient(ellipse at 50% 42%,rgba(237,0,27,.055),transparent 34%),
+    radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.018),transparent 46%),
+    #050608;
+  color:var(--text);
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition:opacity .55s ease,visibility 0s linear 0s;
+}
+.boot-screen:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse at center,#000 0%,transparent 78%);
+  opacity:.6;
+}
+.boot-screen.is-done{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .55s ease,visibility 0s linear .55s;
+}
+.boot-shell{
+  position:relative;
+  z-index:1;
+  width:min(720px,calc(100vw - 48px));
+  padding:24px 0;
+}
+.boot-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding-bottom:15px;
+  border-bottom:1px solid var(--line);
+  color:#777f87;
+  font:9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.boot-top strong{color:#d9dfe3;font-weight:600}
+.boot-center{position:relative;padding:64px 0 28px;text-align:center}
+.boot-orbit{
+  position:relative;
+  width:156px;
+  height:156px;
+  margin:0 auto 36px;
+  border:1px solid #341a20;
+  border-radius:50%;
+  box-shadow:inset 0 0 50px rgba(237,0,27,.045),0 0 28px rgba(237,0,27,.025);
+}
+.boot-orbit:before,.boot-orbit:after{
+  content:"";
+  position:absolute;
+  inset:19px;
+  border:1px solid #2b1a1e;
+  border-radius:50%;
+  transform:rotate(36deg) scaleX(.48);
+}
+.boot-orbit:after{inset:38px;transform:rotate(-31deg) scaleX(.72)}
+.boot-logo{
+  position:absolute;
+  z-index:2;
+  top:50%;
+  left:50%;
+  display:block;
+  width:104px;
+  height:104px;
+  max-width:72%;
+  max-height:72%;
+  object-fit:contain;
+  transform:translate(-50%,-50%);
+  filter:drop-shadow(0 0 13px rgba(237,0,27,.24));
+}
+.boot-eyebrow{
+  color:#92999f;
+  font:9px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.boot-title{
+  margin-top:16px;
+  color:#edf1f3;
+  font-size:clamp(36px,6vw,64px);
+  font-weight:850;
+  line-height:.95;
+  letter-spacing:-.06em;
+}
+.boot-title span{color:transparent;-webkit-text-stroke:1px #dce3e7}
+.boot-status{
+  min-height:28px;
+  margin:27px 0 20px;
+  color:#929ba2;
+  font:10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.boot-bar{
+  height:2px;
+  overflow:hidden;
+  background:#1b1417;
+}
+.boot-fill{
+  width:0;
+  height:100%;
+  background:linear-gradient(90deg,var(--brand),#ff6878);
+  box-shadow:0 0 13px rgba(237,0,27,.36);
+  transition:width .08s linear;
+}
+.boot-readout{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  margin-top:10px;
+  color:#777f87;
+  font:8px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.boot-readout b{color:#c98b94;font-weight:500}
+.boot-readout span:last-child{max-width:58%;text-align:right}
+.network.booting .ring,
+.network.booting .edge,.network.booting .node,
+.network.booting .label,.network.booting .value,.network.booting .pulse{
+  transition:opacity .2s ease;
+}
+body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
+@media(max-width:560px){
+  .boot-screen{padding:18px}
+  .boot-shell{width:calc(100vw - 36px)}
+  .boot-center{padding-top:48px}
+  .boot-orbit{width:140px;height:140px;margin-bottom:30px}
+  .boot-logo{width:94px;height:94px}
+  .boot-readout{font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){
+  .boot-screen,.boot-screen.is-done,.boot-fill{transition:none}
+}
+
 </style>
 </head>
 <body><a class="skip-link" href="#systems">Skip to content</a><div class="boot-screen" id="bootScreen" role="status" aria-live="polite" aria-label="VICE13TH LABS initialization">
