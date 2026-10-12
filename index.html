@@ -38,9 +38,6 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
 :root{
   --brand:#ed001b;
   --brand-bright:#ff344b;
-  --brand-soft:#ff98a4;
-  --brand-line:rgba(237,0,27,.28);
-  --brand-glow:rgba(237,0,27,.16);
 }
 body:before{
   background:
@@ -107,13 +104,6 @@ body:before{
 }
 .boot-orbit:before,.boot-orbit:after{border-color:#32171d}
 .boot-logo{filter:drop-shadow(0 0 15px rgba(237,0,27,.28))}
-.boot-orbit i{
-  background:var(--brand-bright);
-  box-shadow:0 0 18px rgba(237,0,27,.75);
-}
-.boot-orbit i:before,.boot-orbit i:after{
-  background:linear-gradient(90deg,rgba(237,0,27,.68),transparent);
-}
 .boot-bar{background:#211317}
 .boot-fill{
   background:linear-gradient(90deg,var(--brand),#ff6576);
