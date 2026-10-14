@@ -1200,7 +1200,7 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
       const version=document.createElement('span');
       version.className='release-version';
       const appVersionLine=String(release.body||'').split('\n').find(line=>line.toLowerCase().includes('app version:'))||'';
-      const appVersion=appVersionLine?appVersionLine.slice(appVersionLine.toLowerCase().indexOf('app version:')+'app version:'.length).trim().split(/[ (]/)[0]:'';
+      const appVersion=appVersionLine?appVersionLine.slice(appVersionLine.toLowerCase().indexOf('app version:')+'app version:'.length).replaceAll('`','').trim().split(/[ (]/)[0]:'';
       version.textContent=isDeviceBuild&&appVersion?'v'+appVersion+' · DEVICE BUILD':release.tag_name;
       const date=document.createElement('span');
       date.className='release-date';
