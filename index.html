@@ -1186,8 +1186,9 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
       if(!response.ok)throw new Error('HTTP '+response.status);
       const payload=await response.json();
       const releases=isHorizon?(Array.isArray(payload)?payload:[]):[];
+      const hasApk=item=>Array.isArray(item.assets)&&item.assets.some(asset=>String(asset.name||'').toLowerCase().endsWith('.apk')&&asset.browser_download_url);
       const release=isHorizon
-        ?releases.find(item=>!item.draft&&item.html_url&&item.tag_name&&Array.isArray(item.assets)&&item.assets.some(asset=>/\\.apk$/i.test(asset.name)&&asset.browser_download_url))
+        ?releases.find(item=>!item.draft&&item.html_url&&item.tag_name&&hasApk(item))
         :payload;
       if(!release||release.draft||(!isHorizon&&release.prerelease)||!release.html_url||!release.tag_name){
         state(card,isHorizon?'NO PUBLIC DEVICE BUILD':'NO PUBLIC STABLE RELEASE');return;
@@ -1198,8 +1199,9 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
       if(kicker)kicker.textContent=isDeviceBuild?'LATEST DEVICE BUILD · PRE-RELEASE':'LATEST STABLE RELEASE';
       const version=document.createElement('span');
       version.className='release-version';
-      const appVersion=String(release.body||'').match(/App version:\\s*([^\\s(]+)/i);
-      version.textContent=isDeviceBuild&&appVersion?'v'+appVersion[1]+' · DEVICE BUILD':release.tag_name;
+      const appVersionLine=String(release.body||'').split('\n').find(line=>line.toLowerCase().includes('app version:'))||'';
+      const appVersion=appVersionLine?appVersionLine.slice(appVersionLine.toLowerCase().indexOf('app version:')+'app version:'.length).trim().split(/[ (]/)[0]:'';
+      version.textContent=isDeviceBuild&&appVersion?'v'+appVersion+' · DEVICE BUILD':release.tag_name;
       const date=document.createElement('span');
       date.className='release-date';
       const parsed=release.published_at?new Date(release.published_at):null;
@@ -1211,10 +1213,10 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
       actions.append(makeLink('VIEW RELEASE ↗',release.html_url,true));
       const assets=Array.isArray(release.assets)?release.assets:[];
       const preferred=isHorizon
-        ?assets.find(asset=>/\\.apk$/i.test(asset.name)&&asset.browser_download_url)
-        :assets.find(asset=>/setup.*\\.exe$/i.test(asset.name))
-          ||assets.find(asset=>/\\.apk$/i.test(asset.name))
-          ||assets.find(asset=>/\\.exe$/i.test(asset.name))
+        ?assets.find(asset=>String(asset.name||'').toLowerCase().endsWith('.apk')&&asset.browser_download_url)
+        :assets.find(asset=>{const name=String(asset.name||'').toLowerCase();return name.startsWith('setup')&&name.endsWith('.exe')})
+          ||assets.find(asset=>String(asset.name||'').toLowerCase().endsWith('.apk'))
+          ||assets.find(asset=>String(asset.name||'').toLowerCase().endsWith('.exe'))
           ||assets.find(asset=>asset.browser_download_url);
       if(preferred&&preferred.browser_download_url){
         actions.append(makeLink('DOWNLOAD ↗',preferred.browser_download_url,false));
