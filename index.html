@@ -1197,7 +1197,7 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
       const isDeviceBuild=isHorizon&&Boolean(release.prerelease);
       const meta=panel.querySelector('.release-meta');
       const kicker=meta.querySelector('.release-kicker');
-      if(kicker)kicker.textContent=isDeviceBuild?'LATEST DEVICE BUILD · PRE-RELEASE':'LATEST STABLE RELEASE';
+      if(kicker)kicker.textContent=isDeviceBuild?'DEVICE-VERIFIED BUILD · PRE-RELEASE':'LATEST STABLE RELEASE';
       const version=document.createElement('span');
       version.className='release-version';
       const appVersionLine=String(release.body||'').split('\n').find(line=>line.toLowerCase().includes('app version:'))||'';
