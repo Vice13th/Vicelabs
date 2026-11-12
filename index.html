@@ -997,6 +997,7 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
 }
 
 </style>
+<link rel="stylesheet" href="./visual-refresh.css">
 </head>
 <body><a class="skip-link" href="#systems">Skip to content</a><div class="boot-screen" id="bootScreen" role="status" aria-live="polite" aria-label="VICE13TH LABS initialization">
 <div class="boot-shell">
@@ -1112,16 +1113,36 @@ body.booting .orbit{opacity:calc(.42 + var(--boot-alpha,0)*.4)}
   }
   const orbit=document.querySelector('.orbit');
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!reducedMotion){
+  const finePointer=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  let animationFrame=0,animating=false;
+  function animate(now){
+    if(!animating)return;
+    frame(now,false);
+    animationFrame=requestAnimationFrame(animate);
+  }
+  function startAnimation(){
+    if(animating||document.hidden)return;
+    animating=true;
+    animationFrame=requestAnimationFrame(animate);
+  }
+  function stopAnimation(){
+    animating=false;
+    if(animationFrame)cancelAnimationFrame(animationFrame);
+    animationFrame=0;
+    state.x=0;state.y=0;state.hover=null;
+    frame(performance.now(),false);
+  }
+  frame(performance.now(),false);
+  if(!reducedMotion&&finePointer){
+    orbit.addEventListener('pointerenter',startAnimation);
     orbit.addEventListener('pointermove',ev=>{
+      if(!animating)return;
       const r=orbit.getBoundingClientRect();
       state.x=((ev.clientX-r.left)/r.width-.5)*16;
       state.y=((ev.clientY-r.top)/r.height-.5)*12;
     });
-    orbit.addEventListener('pointerleave',()=>{state.x=0;state.y=0;state.hover=null});
-    requestAnimationFrame(frame);
-  }else{
-    frame(performance.now(),false);
+    orbit.addEventListener('pointerleave',stopAnimation);
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAnimation()});
   }
 })();
 </script><script>
